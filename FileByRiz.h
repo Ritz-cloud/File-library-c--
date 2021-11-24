@@ -13,7 +13,7 @@ class File
         nameFile = pNameFile;
     }
 
-    void WriteToFile(std::string dati, const char metod[])
+    void Write(std::string dati, const char metod[])
 	{
 		int err = fopen_s(&fp, nameFile.c_str(), metod);
 		if (err == 0)
@@ -23,7 +23,7 @@ class File
 		}
 	}
 
-	void WriteLineToFile(std::string dati, const char metod[])
+	void WriteLine(std::string dati, const char metod[])
 	{
 		int err = fopen_s(&fp, nameFile.c_str(), metod);
 		if (err == 0)
@@ -37,13 +37,13 @@ class File
     {
 		if(line <= 0) line = 1;
 
-		if(dati != ReadLineOfFile(line) && (line <= ReturnNumbersLine()))
+		if(dati != ReadLine(line) && (line <= ReturnNumbersLine()))
 		{
 			std::string file = "";
         
 			for(int i = 0; i < (line - 1); i++)
 			{
-				file += ReadLineOfFile(i);
+				file += ReadLine(i);
 			}
 			
 			file += dati;
@@ -52,10 +52,10 @@ class File
 
 			for(int i = line; i < ReturnNumbersLine(); i++)
 			{
-				file += ReadLineOfFile(i);
+				file += ReadLine(i);
 			}
 
-			WriteToFile(file, "w");
+			Write(file, "w");
 		}
     }
 
@@ -83,7 +83,7 @@ class File
 	}
 
 
-    std::string ReadLineOfFile(int line)
+    std::string ReadLine(int line)
     {
         std::string dati = "";
         char buffer[1024];

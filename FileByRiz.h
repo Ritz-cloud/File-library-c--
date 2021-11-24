@@ -5,17 +5,17 @@ class File
 {
     private:
     FILE *fp;
-    std::string nomeFile;
+    std::string nameFile;
 
     public:
-    File(std::string pNomeFile)
+    File(std::string pNameFile)
     {
-        nomeFile = pNomeFile;
+        nameFile = pNameFile;
     }
 
     void WriteToFile(std::string dati, const char metod[])
 	{
-		int err = fopen_s(&fp, nomeFile.c_str(), metod);
+		int err = fopen_s(&fp, nameFile.c_str(), metod);
 		if (err == 0)
 		{
 			fprintf(fp, "%s", dati.c_str());
@@ -25,7 +25,7 @@ class File
 
 	void WriteLineToFile(std::string dati, const char metod[])
 	{
-		int err = fopen_s(&fp, nomeFile.c_str(), metod);
+		int err = fopen_s(&fp, nameFile.c_str(), metod);
 		if (err == 0)
 		{
 			fprintf(fp, "%s\n", dati.c_str());
@@ -63,7 +63,7 @@ class File
 	{
 		std::string dati = "";
 
-		int err = fopen_s(&fp, nomeFile.c_str(), "r");
+		int err = fopen_s(&fp, nameFile.c_str(), "r");
 		if (err == 0)
 		{
 			while (!feof(fp))
@@ -89,7 +89,7 @@ class File
         char buffer[1024];
         int cont = 0;
 
-        int err = fopen_s(&fp, nomeFile.c_str(), "r");
+        int err = fopen_s(&fp, nameFile.c_str(), "r");
         if(err == 0)
         {
             while (!feof(fp))
@@ -118,7 +118,7 @@ class File
 		int cont = 0;
 		char buffer[1024];
 
-		int err = fopen_s(&fp, nomeFile.c_str(), "r");
+		int err = fopen_s(&fp, nameFile.c_str(), "r");
 		if (err == 0)
 		{
 			while (!feof(fp))

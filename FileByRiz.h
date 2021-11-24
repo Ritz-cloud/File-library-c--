@@ -47,7 +47,7 @@ class File
 			}
 			
 			file += dati;
-			if (ReturnNumbersLine() != line)
+			if (line != ReturnNumbersLine())
 				file += "\n";
 
 			for(int i = line; i < ReturnNumbersLine(); i++)
